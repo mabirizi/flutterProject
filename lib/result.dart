@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class Result extends StatelessWidget {
 
   final int totalScore;
+  final Function resetQuiz;
 
-  Result(this.totalScore);
+  Result(this.totalScore, this.resetQuiz);
 
   String get resultPharse {
 
@@ -27,9 +28,15 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(resultPharse, 
-        style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
+      child:  Column(
+        children: <Widget>[
+          Text(resultPharse, 
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+
+          FlatButton(child: Text('Restart Quiz'), onPressed:resetQuiz ,)
+        ],
       ),
     );
   }
